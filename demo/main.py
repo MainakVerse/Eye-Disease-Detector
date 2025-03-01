@@ -32,6 +32,7 @@ def apply_tailwind_css():
             gap: 3.5rem; /* Increase spacing between tabs */
             background-color: white;
             margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
         }
         
         .stTabs [data-baseweb="tab"] {
