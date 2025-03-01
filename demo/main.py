@@ -29,22 +29,28 @@ def apply_tailwind_css():
             padding-bottom: 2rem;
         }
         .stTabs [data-baseweb="tab-list"] {
-            gap: 1rem;
+            gap: 1.5rem; /* Increase spacing between tabs */
             color: white;
             margin-bottom: 1.5rem;
         }
+        
         .stTabs [data-baseweb="tab"] {
-            height: 3rem;
+            height: 3.5rem; /* Increase tab height */
+            min-width: 200px; /* Set a minimum width for wider tabs */
             white-space: pre-wrap;
             border-radius: 0.5rem 0.5rem 0 0;
-            padding: 0.5rem 1rem;
-            font-weight: 600;
+            padding: 1rem 2rem; /* Increase padding for better spacing */
+            font-weight: 700; /* Make text bolder */
+            font-size: 1.2rem; /* Increase font size */
+            text-align: center;
         }
+        
         .stTabs [aria-selected="true"] {
-            background-color: rgba(59, 130, 246, 0.1);
-            border-bottom: 2px solid rgb(59, 130, 246);
+            background-color: rgba(59, 130, 246, 0.2); /* Slightly brighter highlight */
+            border-bottom: 3px solid rgb(59, 130, 246); /* Thicker bottom border */
             color: #ffffff;
         }
+
         @keyframes neonGlow {
             0% { box-shadow: 0 0 10px #ff00ff, 0 0 12px #ff00ff, 0 0 15px #ff00ff; }
             50% { box-shadow: 0 0 10px #00ff00, 0 0 12px #00ff00, 0 0 15px #00ff00; }
