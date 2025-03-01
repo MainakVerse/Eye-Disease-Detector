@@ -44,11 +44,11 @@ def apply_tailwind_css():
             border-bottom: 2px solid rgb(59, 130, 246);
         }
         .card {
-            padding: 1.5rem;
+            padding: 0.5rem;
             border-radius: 0.75rem;
-            background-color: white;
+            background-color: yellow;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
             height: calc(100% - 1.5rem);
         }
         .uploadedFile {
