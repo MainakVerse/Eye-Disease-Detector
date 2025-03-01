@@ -45,7 +45,7 @@ def apply_tailwind_css():
             color: #ffffff;
         }
         .card {
-            padding: 0.5rem;
+            padding: 1.5rem;
             border-radius: 0.75rem;
             background-color: white;
             margin: 0.5rem;
