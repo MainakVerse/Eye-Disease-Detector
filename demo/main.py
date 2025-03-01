@@ -352,7 +352,7 @@ def main():
         """, unsafe_allow_html=True)
 
     # Add footer
-    st.markdown("""
+    st.sidebar.markdown("""
     <footer class="p-4 mt-6 text-center text-gray-500 text-sm">
         <p>Developed with ❤️ by Mainak | 2025</p>
     </footer>
