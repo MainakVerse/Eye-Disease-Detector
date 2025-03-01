@@ -141,7 +141,7 @@ def main():
             <div class="column">
                 <div class="card">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Upload Eye Image</h2>
-                    <p class="text-gray-600 mb-4">Upload a clear image of the eye for disease detection</p>
+                    <p class="text-gray-600 mb-4"></p>
                 </div>
             </div>
             <div class="column">
