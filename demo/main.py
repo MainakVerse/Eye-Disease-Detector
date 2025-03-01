@@ -5,7 +5,14 @@ from PIL import Image
 from pathlib import Path
 from model import ImprovedTinyVGGModel
 from utils import *
-import streamlit.components.v1 as components
+
+# Configure page - MUST be the first Streamlit command
+st.set_page_config(
+    page_title="Ocular Eye Disease Classification",
+    page_icon="👁️",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 def apply_tailwind_css():
     # Apply Tailwind CSS styles via CDN
@@ -60,14 +67,6 @@ def apply_tailwind_css():
 
 def main():
     apply_tailwind_css()
-    
-    # Configure page
-    st.set_page_config(
-        page_title="Ocular Eye Disease Classification",
-        page_icon="👁️",
-        layout="wide",
-        initial_sidebar_state="expanded"
-    )
     
     # Sidebar
     with st.sidebar:
@@ -331,7 +330,7 @@ def main():
     # Add footer
     st.markdown("""
     <footer class="p-4 mt-6 text-center text-gray-500 text-sm">
-        <p>Developed with ❤️ by Optician AI Team | 2025</p>
+        <p>Developed with ❤️ by Mainak | 2025</p>
     </footer>
     """, unsafe_allow_html=True)
 
