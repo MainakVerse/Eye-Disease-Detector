@@ -6,6 +6,7 @@ from pathlib import Path
 from model import ImprovedTinyVGGModel
 from utils import *
 import datetime
+import google.generativeai as genai
 
 # Configure page - MUST be the first Streamlit command
 st.set_page_config(
@@ -135,7 +136,7 @@ def apply_tailwind_css():
     </style>
     """, unsafe_allow_html=True)
 
-      # Main content
+    # Main content
     st.sidebar.markdown("""
     <h1 class="text-3xl font-bold text-blue-700 mb-6">Ocular Eye Disease Classification</h1>
     """, unsafe_allow_html=True)
@@ -153,10 +154,6 @@ def main():
             <p class="text-sm text-gray-500">Device: CPU/GPU</p>
         </div>
         """, unsafe_allow_html=True)
-        
-       
-    
-  
     
     # Creating tabs - each with 4 columns width
     tab1, tab2, tab3 = st.tabs(["DETECTION", "ABOUT", "OPTICIAN AI"])
@@ -204,8 +201,6 @@ def main():
             
             # Define paths
             data_path = Path("demo/test_images/")
-            
-            
             
             uploaded_file = st.file_uploader("Choose an image (JPG, JPEG, PNG)", type=["jpg", "jpeg", "png"], key="eyeimage")
             
@@ -269,8 +264,6 @@ def main():
                 # Update time for last prediction
                 current_time = datetime.datetime.now().strftime("%H:%M:%S")
                 st.session_state['last_prediction_time'] = current_time
-                
-                
     
     # About Tab with improved spacing
     with tab2:
@@ -577,67 +570,68 @@ def main():
                     </style>
                     """, unsafe_allow_html=True)
                 
-            if ask_button:
-                if user_query:
-                    with st.spinner("Optician AI is analyzing your question..."):
-                        try:
-                            # Get the response
-                            response = ask_optician_ai(user_query)
-                            # Add to chat history
-                            st.session_state.optician_chat_history.append(("You", user_query))
-                            st.session_state.optician_chat_history.append(("Optician AI", response))
-                            # Clear the selected question after submission
-                            st.session_state.optician_selected_question = ""
-                        except Exception as e:
-                            st.error(f"Error connecting to Gemini AI: {str(e)}")
-        else:
-            st.info("The Optician AI chatbot requires a Gemini API key to function.")
-            user_query = st.text_input("Ask your question about eye health:", key="optician_ai_query", disabled=True)
-            st.button("Ask Optician AI", disabled=True)
+                if ask_button:
+                    if user_query:
+                        with st.spinner("Optician AI is analyzing your question..."):
+                            try:
+                                # Get the response
+                                response = ask_optician_ai(user_query)
+                                # Add to chat history
+                                st.session_state.optician_chat_history.append(("You", user_query))
+                                st.session_state.optician_chat_history.append(("Optician AI", response))
+                                # Clear the selected question after submission
+                                st.session_state.optician_selected_question = ""
+                            except Exception as e:
+                                st.error(f"Error connecting to Gemini AI: {str(e)}")
+            else:
+                st.info("The Optician AI chatbot requires a Gemini API key to function.")
+                user_query = st.text_input("Ask your question about eye health:", key="optician_ai_query", disabled=True)
+                st.button("Ask Optician AI", disabled=True)
     
-    # Display chat history in tablet-like response area
-    if "optician_chat_history" in st.session_state and len(st.session_state.optician_chat_history) > 0:
-        st.subheader("Conversation with Optician AI")
-        
-        # Create a tablet-like container for the conversation
-        with st.container():
-            st.markdown('<div class="tablet-response">', unsafe_allow_html=True)
+        # Display chat history in tablet-like response area
+        if "optician_chat_history" in st.session_state and len(st.session_state.optician_chat_history) > 0:
+            st.subheader("Conversation with Optician AI")
             
-            for i, (role, message) in enumerate(st.session_state.optician_chat_history):
-                if role == "You":
-                    st.markdown(f'<div class="user-container"><div class="chat-message-user"><strong>👤 {role}:</strong> {message}</div></div>', unsafe_allow_html=True)
-                else:
-                    # For the latest bot response, add the typewriter effect
-                    if i == len(st.session_state.optician_chat_history) - 1 and role == "Optician AI":
-                        st.markdown(f'<div class="bot-container"><div class="chat-message-bot"><strong>👁️ {role}:</strong> <span class="typewriter-text">{message}</span></div></div>', unsafe_allow_html=True)
+            # Create a tablet-like container for the conversation
+            with st.container():
+                st.markdown('<div class="tablet-response">', unsafe_allow_html=True)
+                
+                for i, (role, message) in enumerate(st.session_state.optician_chat_history):
+                    if role == "You":
+                        st.markdown(f'<div class="user-container"><div class="chat-message-user"><strong>👤 {role}:</strong> {message}</div></div>', unsafe_allow_html=True)
                     else:
-                        st.markdown(f'<div class="bot-container"><div class="chat-message-bot"><strong>👁️ {role}:</strong> {message}</div></div>', unsafe_allow_html=True)
-            
-            st.markdown('</div>', unsafe_allow_html=True)
+                        # For the latest bot response, add the typewriter effect
+                        if i == len(st.session_state.optician_chat_history) - 1 and role == "Optician AI":
+                            st.markdown(f'<div class="bot-container"><div class="chat-message-bot"><strong>👁️ {role}:</strong> <span class="typewriter-text">{message}</span></div></div>', unsafe_allow_html=True)
+                        else:
+                            st.markdown(f'<div class="bot-container"><div class="chat-message-bot"><strong>👁️ {role}:</strong> {message}</div></div>', unsafe_allow_html=True)
+                
+                st.markdown('</div>', unsafe_allow_html=True)
     
-    # Add some common questions as examples
-    st.markdown('<h3 class="section-header">Common Eye Health Questions</h3>', unsafe_allow_html=True)
+        # Add some common questions as examples
+        st.markdown('<h3 class="section-header">Common Eye Health Questions</h3>', unsafe_allow_html=True)
+        
+        example_questions = [
+            "What are the early signs of glaucoma?",
+            "How often should I get my eyes checked?",
+            "What causes dry eyes and how can I treat them?",
+            "Are blue light glasses effective for digital eye strain?",
+            "What's the difference between progressive and bifocal lenses?"
+        ]
+        
+        # Create functions for handling button clicks
+        def set_optician_question(question):
+            st.session_state.optician_selected_question = question
+        
+        col1, col2 = st.columns(2)
+        for i, question in enumerate(example_questions):
+            if i % 2 == 0:
+                with col1:
+                    st.button(f"👁️ {question}", key=f"opt_q{i}", on_click=set_optician_question, args=(question,))
+            else:
+                with col2:
+                    st.button(f"👁️ {question}", key=f"opt_q{i}", on_click=set_optician_question, args=(question,))
     
-    example_questions = [
-        "What are the early signs of glaucoma?",
-        "How often should I get my eyes checked?",
-        "What causes dry eyes and how can I treat them?",
-        "Are blue light glasses effective for digital eye strain?",
-        "What's the difference between progressive and bifocal lenses?"
-    ]
-    
-    # Create functions for handling button clicks
-    def set_optician_question(question):
-        st.session_state.optician_selected_question = question
-    
-    col1, col2 = st.columns(2)
-    for i, question in enumerate(example_questions):
-        if i % 2 == 0:
-            with col1:
-                st.button(f"👁️ {question}", key=f"opt_q{i}", on_click=set_optician_question, args=(question,))
-        else:
-            with col2:
-                st.button(f"👁️ {question}", key=f"opt_q{i}", on_click=set_optician_question, args=(question,))
     # Add footer
     st.sidebar.markdown("""
     <footer class="p-4 mt-6 text-center text-gray-500 text-sm">
