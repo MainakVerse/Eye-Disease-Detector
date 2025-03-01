@@ -38,10 +38,11 @@ def apply_tailwind_css():
             height: 3.5rem; /* Increase tab height */
             min-width: 250px; /* Set a minimum width for wider tabs */
             white-space: pre-wrap;
+            color:white;
             border-radius: 0.5rem 0.5rem 0 0;
             padding: 1rem 2rem; /* Increase padding for better spacing */
             font-weight: 700; /* Make text bolder */
-            font-size: 2em; /* Increase font size */
+            font-size: 4em; /* Increase font size */
             text-align: center;
         }
         
