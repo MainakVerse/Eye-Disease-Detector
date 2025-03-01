@@ -41,7 +41,7 @@ def apply_tailwind_css():
             border-radius: 0.5rem 0.5rem 0 0;
             padding: 1rem 2rem; /* Increase padding for better spacing */
             font-weight: 700; /* Make text bolder */
-            font-size: 2rem; /* Increase font size */
+            font-size: 2em; /* Increase font size */
             text-align: center;
         }
         
