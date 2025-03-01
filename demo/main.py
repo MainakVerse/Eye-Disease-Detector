@@ -56,7 +56,7 @@ def apply_tailwind_css():
             background-color: black;
             margin: 0.5rem;
             text-align: center;
-            color: #ffffff;
+            color: cyan;
             animation: neonGlow 3s infinite alternate;
             height: calc(100% - 1.5rem);
             transition: 0.3s ease-in-out;
