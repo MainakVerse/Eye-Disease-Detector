@@ -10,7 +10,7 @@ import google.generativeai as genai
 
 # Configure page - MUST be the first Streamlit command
 st.set_page_config(
-    page_title="Ocular Eye Disease Classification",
+    page_title="Eye Disease Detector",
     page_icon="👁️",
     layout="wide",
     initial_sidebar_state="expanded"
