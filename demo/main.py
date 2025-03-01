@@ -36,12 +36,12 @@ def apply_tailwind_css():
         
         .stTabs [data-baseweb="tab"] {
             height: 3.5rem; /* Increase tab height */
-            min-width: 200px; /* Set a minimum width for wider tabs */
+            min-width: 250px; /* Set a minimum width for wider tabs */
             white-space: pre-wrap;
             border-radius: 0.5rem 0.5rem 0 0;
             padding: 1rem 2rem; /* Increase padding for better spacing */
             font-weight: 700; /* Make text bolder */
-            font-size: 1.2rem; /* Increase font size */
+            font-size: 2rem; /* Increase font size */
             text-align: center;
         }
         
