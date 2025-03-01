@@ -119,20 +119,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
         
-        # Prediction results will appear here when available
-        st.markdown("""
-        <div class="sidebar-card" id="prediction-results">
-            <h3 class="text-lg font-semibold text-gray-800 mb-3">Prediction Results</h3>
-            <p class="text-sm text-gray-500">Upload an image to see the prediction</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <div class="sidebar-card">
-            <h3 class="text-lg font-semibold text-gray-800 mb-3">About</h3>
-            <p class="text-sm text-gray-600">This application uses a deep learning model to classify various eye diseases from images.</p>
-        </div>
-        """, unsafe_allow_html=True)
+       
     
     # Main content
     st.markdown("""
