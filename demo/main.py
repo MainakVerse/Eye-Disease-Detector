@@ -45,9 +45,9 @@ def apply_tailwind_css():
             color: #ffffff;
         }
         @keyframes neonGlow {
-            0% { box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; }
-            50% { box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
-            100% { box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; }
+            0% { box-shadow: 0 0 10px #ff00ff, 0 0 12px #ff00ff, 0 0 15px #ff00ff; }
+            50% { box-shadow: 0 0 10px #00ff00, 0 0 12px #00ff00, 0 0 15px #00ff00; }
+            100% { box-shadow: 0 0 10px #00ffff, 0 0 12px #00ffff, 0 0 15px #00ffff; }
         }
 
         .cardhome {
