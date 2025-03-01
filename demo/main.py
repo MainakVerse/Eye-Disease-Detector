@@ -331,54 +331,313 @@ def main():
     
     # Optician AI Tab with improved spacing
     with tab3:
-        st.markdown("""
-        <div class="row-container">
-            <div class="column">
-                <div class="card">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Optician AI</h2>
-                    <p class="text-gray-600">
-                        Optician AI is an advanced platform for eye care professionals that leverages artificial intelligence to enhance diagnosis capabilities.
-                    </p>
-                    <p class="text-gray-600 mt-3">
-                        Our mission is to make eye disease detection more accessible, accurate, and efficient through cutting-edge technology.
-                    </p>
-                </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Our Technology</h2>
-                    <p class="text-gray-600">
-                        The core of our system uses a custom neural network architecture specifically optimized for ocular disease detection.
-                    </p>
-                    <p class="text-gray-600 mt-3">
-                        Key features:
-                    </p>
-                    <ul class="list-disc pl-5 mt-2 text-gray-600">
-                        <li>High accuracy classification</li>
-                        <li>Rapid processing time</li>
-                        <li>Support for various image formats</li>
-                        <li>Regular model updates</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="column">
-                <div class="card">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Contact Us</h2>
-                    <p class="text-gray-600">
-                        For more information about Optician AI or to provide feedback, please contact our team.
-                    </p>
-                    <div class="mt-4">
-                        <p class="text-gray-600"><span class="font-semibold">Email:</span> support@opticianai.com</p>
-                        <p class="text-gray-600 mt-1"><span class="font-semibold">Website:</span> www.opticianai.com</p>
-                    </div>
-                    <p class="text-gray-600 mt-4 text-sm">
-                        © 2025 Optician AI. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown('<h1 class="section-header">Optician AI Assistant</h1>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="info-card">
+        <h3 style="color:#000000;">Ask the Optician AI</h3>
+        <p>Get expert advice on eye health, vision problems, and eyewear recommendations. Our AI-powered Optician Assistant can answer your questions about eye care and vision management.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Custom CSS for the tablet-like response area and typewriter effect
+    st.markdown("""
+    <style>
+        .info-card {
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tablet-response {
+            background-color: #f7f9fc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e0e5ec;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        /* Custom scrollbar for the tablet */
+        .tablet-response::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .tablet-response::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .tablet-response::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
+            color: #000000;
+        }
+        
+        .typewriter-text {
+            overflow: hidden;
+            border-right: .15em solid #3498db;
+            white-space: pre-wrap;
+            margin: 0 auto;
+            letter-spacing: .1em;
+            color: #000000;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { max-width: 0 }
+            to { max-width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3498db; }
+        }
+        
+        .chat-message-user {
+            background-color: #E8F4FD;
+            padding: 10px 15px;
+            border-radius: 18px 18px 18px 0;
+            margin-bottom: 10px;
+            display: inline-block;
+            max-width: 80%;
+            color: #000000;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .chat-message-bot {
+            background-color: #F0F7FF;
+            padding: 10px 15px;
+            color: #000000;
+            border-radius: 18px 18px 0 18px;
+            margin-bottom: 10px;
+            margin-left: auto;
+            display: inline-block;
+            max-width: 80%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            border-left: 2px solid #3498db;
+        }
+        
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .bot-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        
+        .question-button {
+            background-color: #f8f9fa;
+            border: 1px solid #e0e5ec;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .question-button:hover {
+            background-color: #E8F4FD;
+            border-left: 3px solid #3498db;
+        }
+        
+        .stButton>button {
+            background-color: #f8f9fa;
+            border: 1px solid #e0e5ec;
+            border-radius: 8px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .stButton>button:hover {
+            background-color: #E8F4FD;
+            border-left: 3px solid #3498db;
+        }
+        
+        .ask-button {
+            background-color: #3498db !important;
+            color: white !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+            border: none !important;
+            padding: 10px 15px !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .ask-button:hover {
+            background-color: #2980b9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
+    # Display a relevant image
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.image("https://cdn-icons-png.flaticon.com/512/10058/10058014.png", use_column_width=True)
+    
+    with col2:
+        # Initialize chat history
+        if "optician_chat_history" not in st.session_state:
+            st.session_state.optician_chat_history = []
+            
+        # Initialize a session state for the selected question
+        if "optician_selected_question" not in st.session_state:
+            st.session_state.optician_selected_question = ""
+            
+        # Load API Key from Streamlit secrets
+        try:
+            GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+            if not GEMINI_API_KEY:
+                st.error("API key is missing! Add it to Streamlit secrets.")
+        except:
+            st.warning("To enable the Optician AI chatbot, please add your Gemini API key to Streamlit secrets.")
+            GEMINI_API_KEY = None
+            
+        if GEMINI_API_KEY:
+            # Configure Gemini API
+            genai.configure(api_key=GEMINI_API_KEY)
+            
+            # Function to ask Gemini AI about eye health
+            def ask_optician_ai(query):
+                prompt = f"""
+                You are an optician AI assistant specialized in eye health, vision problems, and eyewear recommendations. 
+                Answer only eye care-related queries with medically accurate information.
+                If a question is unrelated to eye care or optometry, politely inform the user that you can 
+                only answer eye health-related questions.
+                
+                Especially focus on these areas:
+                - Vision problems (myopia, hyperopia, astigmatism, presbyopia)
+                - Eye diseases (glaucoma, cataracts, AMD, diabetic retinopathy)
+                - Contact lenses and eyeglasses
+                - Vision correction options
+                - Eye health maintenance
+                - Digital eye strain
+                - Dry eye syndrome
+                - Children's vision
+                
+                **User's Question:** {query}
+                Provide a clear, concise, and accurate response about eye health and vision care.
+                """
+                model = genai.GenerativeModel("gemini-1.5-pro-latest")
+                response = model.generate_content(prompt)
+                
+                return response.text
+            
+            # User input - note that we're using the session state value as the default
+            user_query = st.text_input("Ask your question about eye health:", 
+                                      value=st.session_state.optician_selected_question,
+                                      key="optician_ai_query")
+            
+            # After the user submits a question, clear the selected_question
+            col1, col2 = st.columns([3, 1])
+            with col2:
+                ask_button = st.button("Ask Optician AI", key="ask_optician", type="primary")
+                st.markdown("""
+                <style>
+                    div[data-testid="stButton"] > button[kind="primary"] {
+                        background-color: #3498db;
+                        color: white;
+                        font-weight: bold;
+                        border-radius: 8px;
+                        border: none;
+                        padding: 8px 16px;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    div[data-testid="stButton"] > button[kind="primary"]:hover {
+                        background-color: #2980b9;
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+                </style>
+                """, unsafe_allow_html=True)
+            
+            if ask_button:
+                if user_query:
+                    with st.spinner("Optician AI is analyzing your question..."):
+                        try:
+                            # Get the response
+                            response = ask_optician_ai(user_query)
+                            # Add to chat history
+                            st.session_state.optician_chat_history.append(("You", user_query))
+                            st.session_state.optician_chat_history.append(("Optician AI", response))
+                            # Clear the selected question after submission
+                            st.session_state.optician_selected_question = ""
+                        except Exception as e:
+                            st.error(f"Error connecting to Gemini AI: {str(e)}")
+        else:
+            st.info("The Optician AI chatbot requires a Gemini API key to function.")
+            user_query = st.text_input("Ask your question about eye health:", key="optician_ai_query", disabled=True)
+            st.button("Ask Optician AI", disabled=True)
+    
+    # Display chat history in tablet-like response area
+    if "optician_chat_history" in st.session_state and len(st.session_state.optician_chat_history) > 0:
+        st.subheader("Conversation with Optician AI")
+        
+        # Create a tablet-like container for the conversation
+        with st.container():
+            st.markdown('<div class="tablet-response">', unsafe_allow_html=True)
+            
+            for i, (role, message) in enumerate(st.session_state.optician_chat_history):
+                if role == "You":
+                    st.markdown(f'<div class="user-container"><div class="chat-message-user"><strong>👤 {role}:</strong> {message}</div></div>', unsafe_allow_html=True)
+                else:
+                    # For the latest bot response, add the typewriter effect
+                    if i == len(st.session_state.optician_chat_history) - 1 and role == "Optician AI":
+                        st.markdown(f'<div class="bot-container"><div class="chat-message-bot"><strong>👁️ {role}:</strong> <span class="typewriter-text">{message}</span></div></div>', unsafe_allow_html=True)
+                    else:
+                        st.markdown(f'<div class="bot-container"><div class="chat-message-bot"><strong>👁️ {role}:</strong> {message}</div></div>', unsafe_allow_html=True)
+            
+            st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Add some common questions as examples
+    st.markdown('<h3 class="section-header">Common Eye Health Questions</h3>', unsafe_allow_html=True)
+    
+    example_questions = [
+        "What are the early signs of glaucoma?",
+        "How often should I get my eyes checked?",
+        "What causes dry eyes and how can I treat them?",
+        "Are blue light glasses effective for digital eye strain?",
+        "What's the difference between progressive and bifocal lenses?"
+    ]
+    
+    # Create functions for handling button clicks
+    def set_optician_question(question):
+        st.session_state.optician_selected_question = question
+    
+    col1, col2 = st.columns(2)
+    for i, question in enumerate(example_questions):
+        if i % 2 == 0:
+            with col1:
+                st.button(f"👁️ {question}", key=f"opt_q{i}", on_click=set_optician_question, args=(question,))
+        else:
+            with col2:
+                st.button(f"👁️ {question}", key=f"opt_q{i}", on_click=set_optician_question, args=(question,))
     # Add footer
     st.sidebar.markdown("""
     <footer class="p-4 mt-6 text-center text-gray-500 text-sm">
