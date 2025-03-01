@@ -30,6 +30,7 @@ def apply_tailwind_css():
         }
         .stTabs [data-baseweb="tab-list"] {
             gap: 1rem;
+            color: white;
             margin-bottom: 1.5rem;
         }
         .stTabs [data-baseweb="tab"] {
