@@ -256,16 +256,7 @@ def main():
                 current_time = datetime.datetime.now().strftime("%H:%M:%S")
                 st.session_state['last_prediction_time'] = current_time
                 
-                # Update sidebar with prediction results
-                st.sidebar.markdown(f"""
-                <div class="sidebar-card" id="prediction-results">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Prediction Results</h3>
-                    <p class="font-bold text-{severity_color}-600 text-xl mb-2">{predicted_label[0]}</p>
-                    <p class="text-sm text-gray-700 mb-3">Confidence: {confidence:.2f}%</p>
-                    <hr class="my-3">
-                    <p class="text-xs text-gray-500">Last updated: {current_time}</p>
-                </div>
-                """, unsafe_allow_html=True)
+                
     
     # About Tab with improved spacing
     with tab2:
