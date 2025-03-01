@@ -158,7 +158,7 @@ def main():
   
     
     # Creating tabs - each with 4 columns width
-    tab1, tab2, tab3 = st.tabs(["Detection", "About", "Optician AI"])
+    tab1, tab2, tab3 = st.tabs(["DETECTION", "ABOUT", "OPTICIAN AI"])
     
     # Detection Tab - Using custom row container for better spacing
     with tab1:
