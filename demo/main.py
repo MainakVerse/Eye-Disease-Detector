@@ -76,6 +76,7 @@ def apply_tailwind_css():
             border-radius: 8px;
             padding: 30px;
             margin: 20px 0;
+            color: black;
             background-color: #f8fafc;
         }
         .prediction-card {
