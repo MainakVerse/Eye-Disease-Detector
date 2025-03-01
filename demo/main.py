@@ -44,12 +44,21 @@ def apply_tailwind_css():
             border-bottom: 2px solid rgb(59, 130, 246);
             color: #ffffff;
         }
-        .card {
+        .cardhome {
             padding: 1.5rem;
             border-radius: 0.75rem;
             background-color: white;
             margin: 0.5rem;
             text-align:center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 0.5rem;
+            height: calc(100% - 1.5rem);
+        }
+        .card {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            background-color: white;
+            margin: 0.5rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             margin-bottom: 0.5rem;
             height: calc(100% - 1.5rem);
@@ -140,18 +149,18 @@ def main():
         st.markdown("""
         <div class="row-container">
             <div class="column">
-                <div class="card">
+                <div class="cardhome">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Upload Eye Image</h2>
                     <p class="text-gray-600 mb-4"></p>
                 </div>
             </div>
             <div class="column">
-                <div class="card">
+                <div class="cardhome">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Image Preview</h2>
                 </div>
             </div>
             <div class="column">
-                <div class="card">
+                <div class="cardhome">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4">Analysis Results</h2>
                 </div>
             </div>
