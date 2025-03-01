@@ -53,7 +53,7 @@ def apply_tailwind_css():
         .cardhome {
             padding: 1.5rem;
             border-radius: 0.75rem;
-            background-color: black;
+            background-color: white;
             margin: 0.5rem;
             text-align: center;
             color: #00ffcc;
