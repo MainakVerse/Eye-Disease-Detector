@@ -29,7 +29,7 @@ def apply_tailwind_css():
             padding-bottom: 2rem;
         }
         .stTabs [data-baseweb="tab-list"] {
-            gap: 1.5rem; /* Increase spacing between tabs */
+            gap: 3.5rem; /* Increase spacing between tabs */
             color: white;
             margin-bottom: 1.5rem;
         }
