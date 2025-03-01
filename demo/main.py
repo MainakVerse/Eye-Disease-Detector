@@ -105,6 +105,11 @@ def apply_tailwind_css():
     </style>
     """, unsafe_allow_html=True)
 
+      # Main content
+    st.sidebar.markdown("""
+    <h1 class="text-3xl font-bold text-blue-700 mb-6">Ocular Eye Disease Classification</h1>
+    """, unsafe_allow_html=True)
+
 def main():
     apply_tailwind_css()
     
@@ -121,10 +126,7 @@ def main():
         
        
     
-    # Main content
-    st.sidebar.markdown("""
-    <h1 class="text-3xl font-bold text-blue-700 mb-6">Ocular Eye Disease Classification</h1>
-    """, unsafe_allow_html=True)
+  
     
     # Creating tabs - each with 4 columns width
     tab1, tab2, tab3 = st.tabs(["Detection", "About", "Optician AI"])
