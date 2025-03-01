@@ -182,7 +182,7 @@ def main():
             </div>
             """, unsafe_allow_html=True)
             
-            uploaded_file = st.file_uploader("Choose an image (JPG, JPEG, PNG)", type=["jpg", "jpeg", "png"], key="eyeimage")
+            # uploaded_file = st.file_uploader("Choose an image (JPG, JPEG, PNG)", type=["jpg", "jpeg", "png"], key="eyeimage")
             
         with col2:
             if uploaded_file is not None:
