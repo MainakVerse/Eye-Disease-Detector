@@ -42,6 +42,7 @@ def apply_tailwind_css():
         .stTabs [aria-selected="true"] {
             background-color: rgba(59, 130, 246, 0.1);
             border-bottom: 2px solid rgb(59, 130, 246);
+            color: #ffffff;
         }
         .card {
             padding: 0.5rem;
